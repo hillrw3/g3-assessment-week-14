@@ -8,7 +8,7 @@ class Prescription < ActiveRecord::Base
 
   def start_date_before_end_date
     if starts_on > ends_on
-      errors.add(:starts_on, "Start date should be before end date")
+      errors.add(:ends_on, " must be after the start date")
     end
   end
 end

@@ -18,7 +18,7 @@ class PrescriptionsController < ApplicationController
     )
 
     @patient = Patient.find(params[:prescription][:patient_id])
-    
+
     if params[:prescription][:dosage][0].to_i != 0
       if @prescription.save
         flash[:notice] = "Your prescription has been created"
