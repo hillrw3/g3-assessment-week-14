@@ -1,7 +1,11 @@
+<% if flash.present? %>
+  <div class="flash"><%= flash[:notice] %></div>
+<% end %>
+
 <h1><%= full_name(@patient) %></h1>
 
 <h2>Prescriptions</h2>
-<%= link_to "Add Prescription", '#', class: "float-left" %>
+<%= link_to "Add Prescription", new_prescription_path(patient_id: @patient.id), class: "float-left" %>
 
 <table class="table">
   <thead>
@@ -11,4 +15,13 @@
     <th>Dates</th>
   </tr>
   </thead>
+  <tbody>
+  <% @patient.prescriptions.each do |prescription| %>
+    <tr>
+      <td><%= prescription.medication.name %></td>
+      <td><%= "#{prescription.dosage} #{prescription.schedule}" %></td>
+      <td><%= "#{prescription.starts_on.strftime('%m/%d/%Y')} - #{prescription.ends_on.strftime('%m/%d/%Y')}" %></td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>

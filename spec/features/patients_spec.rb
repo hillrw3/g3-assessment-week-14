@@ -30,11 +30,6 @@ feature "Patients" do
     expect(page).to have_content "Dashboard"
     click_on "Will Schuster"
     expect(page).to have_content "Prescriptions"
-    click_on "Add Prescription"
-    expect(page).to have_content "Add a prescription for Will Schuster"
-    select "Tylenol", from: "Medication"
-    fill_in "Dosage", with: "2 pills"
-    fill_in "Schedule", with: "Once a day"
   end
 
 

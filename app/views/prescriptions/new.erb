@@ -1,0 +1,35 @@
+<h2>Add a prescription to <%= full_name(@patient) %></h2>
+
+<% if @prescription.errors.present? %>
+  <div class="errors">
+    <p>Your prescription could not be saved</p>
+    <ul>
+      <% @prescription.errors.full_messages.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= form_for @prescription, url: prescriptions_path do |f| %>
+  <%= f.label :medication %>
+  <%= f.collection_select :medication, Medication.all, :id, :name, prompt: true %>
+  <br/><br/>
+  <%= f.label :dosage %>
+  <%= f.text_field :dosage %>
+  <br/><br/>
+  <%= f.label :schedule %>
+  <%= f.text_field :schedule %>
+  <br/><br/>
+  <%= f.label :starts_on %>
+  <%= f.date_select :starts_on %>
+  <br/><br/>
+  <%= f.label :ends_on %>
+  <%= f.date_select :ends_on %>
+  <br/><br/>
+  <%= f.hidden_field :patient_id, value: @patient.id %>
+  <%= f.submit %>
+
+
+<% end %>
