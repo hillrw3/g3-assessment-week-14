@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
   resources :patients
   resources :prescriptions
+  resources :medications
 end

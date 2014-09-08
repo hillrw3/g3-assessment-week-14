@@ -1,0 +1,7 @@
+<h1><%= @medication.name %></h1>
+
+<ul>
+  <% @medication.patients.each do |patient| %>
+    <li><%= full_name(patient) %></li>
+  <% end %>
+</ul>

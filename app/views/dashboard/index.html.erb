@@ -26,7 +26,7 @@
   <tbody>
   <% @medications.each do |medication| %>
       <tr>
-        <td><%= medication.name %></td>
+        <td><%= link_to medication.name, medication_path(id: medication.id) %></td>
       </tr>
   <% end %>
   </tbody>
